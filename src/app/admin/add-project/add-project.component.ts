@@ -12,8 +12,6 @@ import { ProjectService } from '../service/project.service';
 export class AddProjectComponent {
   Technology =""
   ProjectTitle=""
-  FrontEnd="" 
-  BackEnd =""
   CompletionDate =""
   StartDate =""
   EstimatedHour =""
@@ -23,8 +21,6 @@ export class AddProjectComponent {
   DefaultVal=""
   TechnologyError =""
   ProjectTitleError=""
-  FrontEndError="" 
-  BackEndError =""
   CompletionDateError =""
   StartDateError =""
   EstimatedHourError =""
@@ -36,9 +32,9 @@ export class AddProjectComponent {
       this.projectService.getAllStatusApi().subscribe(resp => {
         this.Statuses = resp.data;
         console.log(this.Statuses);
-  
+
       })
-  }   
+  }
   saveProject()
   {
     let isError = false
@@ -46,70 +42,54 @@ export class AddProjectComponent {
     if (this.Technology == "" || this.Technology.trim().length == 0) {
       isError = true
       this.TechnologyError = "Please Enter Technology"
-      
+
     } else {
       this.TechnologyError = ""
     }
     if (this.ProjectTitle == "" || this.ProjectTitle.trim().length == 0) {
       isError = true
       this.ProjectTitleError = "Please Enter ProjectTitle"
-      
+
     } else {
       this.ProjectTitleError = ""
-    }
-    if (this.FrontEnd == "" || this.FrontEnd.trim().length == 0) {
-      isError = true
-      this.FrontEndError = "Please Enter FrontEnd"
-      
-    } else {
-      this.FrontEndError = ""
-    }
-    if (this.BackEnd == "" || this.BackEnd.trim().length == 0) {
-      isError = true
-      this.BackEndError = "Please Enter BackEnd"
-      
-    } else {
-      this.BackEndError = ""
     }
     if (this.CompletionDate == "" || this.CompletionDate.trim().length == 0) {
       isError = true
       this.CompletionDateError = "Please Enter CompletionDate"
-      
+
     } else {
       this.CompletionDateError = ""
     }
     if (this.StartDate == "" || this.StartDate.trim().length == 0) {
       isError = true
       this.StartDateError = "Please Enter StartDate"
-      
+
     } else {
       this.StartDateError = ""
     }
     if (this.EstimatedHour == "" ) {
       isError = true
       this.EstimatedHourError = "Please Enter EstimatedHour"
-      
+
     } else {
       this.EstimatedHourError = ""
     }
-    
+
     if (this.Status == "" || this.Status.trim().length == 0|| this.Status== "-1") {
       isError = true
       this.StatusError = "Please Enter Status"
-      
+
     } else {
       this.StatusError = ""
     }
     if (isError == true) {
       console.log("error")
     }
-    else 
+    else
     {
       let data={
         "ProjectTitle":this.ProjectTitle,
         "Technology":this.Technology,
-        "FrontEnd":this.FrontEnd,
-        "BackEnd":this.BackEnd,
         "CompletionDate":this.CompletionDate,
         "StartDate":this.StartDate,
         "EstimatedHour":this.EstimatedHour,
@@ -128,7 +108,7 @@ export class AddProjectComponent {
       this.toastrService.success("Project Successfully Added","",{timeOut:3000})
       this.router.navigateByUrl("admin/listprojects")
       })
-  
+
     }
 
   }
